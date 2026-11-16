@@ -1,4 +1,4 @@
-# Offline Reinforcement Learning, Trajectory Unlearning and Backdoor Robustness (P38 - ICT30017/ICT30018 - Project A and B) - 2026
+# Offline Reinforcement Learning, Trajectory Unlearning and Backdoor Robustness (P38 - ICT30017 + ICT30018 (Project A and B) - 2026)
 
 # Overview
 Replication repository from "https://github.com/minhan6559/TrajDeleter.git" - our mentor repository which have provided us a stable starting point
