@@ -4,12 +4,6 @@
 
 Replication Package for "[TrajDeleter: Enabling Trajectory Forgetting in Offline Reinforcement Learning Agents]([https://arxiv.org/abs/2210.04688](https://arxiv.org/abs/2404.12530))", NDSS 2025.
 
-## Models
-Please check our agents' parameters in this anonymous link:
-- [Agent](https://drive.google.com/drive/folders/1MeGkaGAZa_NXJUuk7GhfzyS_bsUHm8Z3?usp=sharing)
-
-Please download the model from this link, and please move these folders to the ``unlearning" folder.
- 
 The descriptions of folds are as follows:
 
 | fold_name | descriptions |
@@ -21,41 +15,41 @@ The descriptions of folds are as follows:
 ## Selected offline RL algorithms
 | algorithm | discrete control | continuous control | 
 |:-|:-:|:-:|
-| [Batch Constrained Q-learning (BCQ)](https://arxiv.org/abs/1812.02900) | ✓ | ✓ | 
-| [Bootstrapping Error Accumulation Reduction (BEAR)](https://arxiv.org/abs/1906.00949) | x | ✓ | 
 | [Conservative Q-Learning (CQL)](https://arxiv.org/abs/2006.04779) | ✓ | ✓ |
 | [Implicit Q-learning (IQL)](https://arxiv.org/abs/2110.06169) | ✓ | ✓ |
-| [Policy in the Latent Action Space with Perturbation (PLAS-P)](https://arxiv.org/pdf/2011.07213.pdf) | ✓ | ✓ |
-| [Twin Delayed Deep Deterministic Policy Gradient plus Behavioral Cloning (TD3PlusBC)](https://arxiv.org/abs/2106.06860) | ✓ | ✓ |
 
 ## Project structure
 
 The structure of this project in `unlearning' folder is as follows：
 ```
 Unlearning
+    -- CQL_performance_test.py ------------------ evaluate the average cumulative rewards obtained by agents (each checkpoints).
+    -- CQL_performance_test_v2.py ------------------ evaluate the average cumulative rewards obtained by agents for 1% and 5% unlearning/poisoning rates (each checkpoint).
+    -- IQL_performance_test.py ------------------ evaluate the average cumulative rewards obtained by agents (each checkpoints).
+    -- IQL_performance_test_v2.py ------------------ evaluate the average cumulative rewards obtained by agents for 1% and 5% unlearning/poisoning rates (each checkpoint).
     -- env_test.py ------------------ download and test the dataset
-    -- efficacy_evaluation.py ------------------ the codes of trajauditor for RQ1.
-    -- mujoco_exact_unlearning.py ------------------ unlearning with retraining the agents from scratch.
-    -- mujoco_finetuning.py ------------------ unlearning with fine-tuning method.
-    -- mujoco_fully_training.py ------------------ train the original agents using the whole dataset.
-    -- mujoco_random_reward.py ------------------ unlearning with random_reward method.
-    -- mujoco_auditor.py ------------------ the codes of trajauditor for RQ2.
-    -- mujoco_trajdeleter.py ------------------ unlearning using our proposed method.
-    -- performance_test.py ------------------ evaluate the average cumulative rewards obtained by agents.
+    -- efficacy_evaluation.py ------------------ to evaluate the robustness of TrajAuditor using metrices (Precision, Recall and F1-scores).
+    -- kitchen_exact_unlearning.py ------------------ unlearning with retraining the agents from scratch.
+    -- kitchen_finetuning.py ------------------ unlearning with fine-tuning method.
+    -- kitchen_fully_training.py ------------------ train the original agents using the whole dataset.
+    -- kitchen_random_reward.py ------------------ unlearning with random_reward method.
+    -- kitchen_auditor.py ------------------ the codes of trajauditor for RQ2.
+    -- kitchen_trajdeleter.py ------------------ unlearning using our proposed method.
+    -- performance_test.py ------------------ evaluate the average cumulative rewards obtained by agents. (not used)
     -- poisoning_retrain.py ------------------ unlearning the poisoned trajectories using retraining method.
     -- poisoning_training.py ------------------ training agents using the poisoned dataset.
     -- script-aditor.py ------------------ script files of trajauditor and achieve the results in RQ1.
     -- script-exact-unlearning.py ------------------ script files of retraining.
-    -- script-mujoco-fine-tune.py ------------------ script files of fine tuning.
-    -- script-mujoco-random-reward.py ------------------ script files of random reward method.
-    -- script-mujoco-test.py ------------------ script files of agents' performance testing.
-    -- script-mujoco-trajdeleter.py ------------------ script files of our proposed unlearning method.
-    -- script-performance-test.py ------------------ script files of testing the cumulative returns of agents.
+    -- script-fine-tune.py ------------------ script files of fine tuning.
+    -- script-random-reward.py ------------------ script files of random reward method.
+    -- script-mujoco-test.py ------------------ script files of agents' performance testing. (not used)
+    -- script-trajdeleter.py ------------------ script files of our proposed unlearning method.
+    -- script-performance-test.py ------------------ script files of testing the cumulative returns of agents. (not used)
     -- script-poisoning-fine-tuning.py ------------------ script files of fine-tuning the poisoned dataset.
     -- script-poisoning-retrain.py ------------------ script files of retraining the poisoned dataset.
     -- script-poisoning.py ------------------ script files of poisoning agents.
     -- script-trajauditor.py ------------------ script files of trajauditor.
-    packages.txt ------------------ the list of our env.
+    packages.txt ------------------ the list of env.
     params ------------------ the files of hype-parameters settings of offline reinforcement learning algorithms.
     
 ```
@@ -160,7 +154,9 @@ docker run --gpus all -it liuzzyg/trajdeleter:latest /bin/bash
 
 ⚠️ The codes and scripts for replicating our experiments can be found in `README.md` under the `unlearning` folder. 
 
+Once 
+
 ## Acknowledgement
 
 - The codes for achieving the offline RL algorithms are based on the [D3RLPY](https://github.com/takuseno/d3rlpy).
-- The offline datasets for our evaluations are from [D4RL](https://github.com/rail-berkeley/d4rl).
+- The offline datasets for our evaluations are from [UC Berkerly dataset library](http://rail.eecs.berkeley.edu/datasets/offline_rl/kitchen/).
