@@ -56,9 +56,7 @@ Unlearning
 
 
 ## Installation
-This code was developed with python 3.7.11.
 
-The version of Mujoco is [Mujoco 2.1.0](https://github.com/deepmind/mujoco/releases/tag/2.1.0).
 
 Our CUDA version is -. We ran majority of the experiments on Swinburne HPC which have different GPU nodes.
 
@@ -77,7 +75,17 @@ To install the Apptainer with all the dependencies needed for the environment,
 
 To submit batch jobs to HPC (for long run trainings),
 
-1) 
+1) cql_performance.sh/cql_performance_2.sh - to run scripts for evaluating model cumulative reward return (CQL)
+2) iql_performance.sh/iql_performance_2.sh - to run scripts for evaluating model cumulative reward return (IQL)
+3) kitchen-download-dataset.sh - to download the kitchen datasets
+4) kitchen-exact-unlearning.sh - to run exact unlearning scripts
+5) kitchen-fine-tune.sh - to run fine-tuning unlearning scripts
+6) kitchen-poison-fine-tune.sh - to run poison fine-tuning unleanrning scripts
+7) kitchen-poisoning-retrain.sh - to run retrain clean dataset scripts for comparison against poisoning training
+8) kitchen-poisoning-training.sh - to run training dataset with poison trajectories
+9) kitchen-random-reward.sh - to run random-reward unlearning
+10) kitchen-trajauditor.sh - to evaluate trajdeleter unlearning (%PPR and retention rate)
+11) kitchen-trajdeleter.sh - to run trajdeleter scripts
 
 ## Acknowledgement
 
