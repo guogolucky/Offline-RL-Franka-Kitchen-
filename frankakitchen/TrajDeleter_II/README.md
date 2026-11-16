@@ -60,101 +60,24 @@ This code was developed with python 3.7.11.
 
 The version of Mujoco is [Mujoco 2.1.0](https://github.com/deepmind/mujoco/releases/tag/2.1.0).
 
-Our CUDA version is 12.4.
+Our CUDA version is -. We ran majority of the experiments on Swinburne HPC which have different GPU nodes.
 
-### 1. Install d3rlpy and mujoco-py:
+### Install with Apptainer
 
-```
-pip install d3rlpy==1.0.0
-pip install mujoco-py==2.1.2.14
-pip install gym==0.22.0
-pip install scikit-learn==1.0.2
-pip install Cython==0.29.36
-```
+To install the Apptainer with all the dependencies needed for the environment,
 
-### 2. Install mujoco:
-
-```
-mkdir ~/.mujoco
-```
-
-Download `mujoco210-linux-x86_64.tar.gz` from [Mujoco 2.1.0](https://github.com/deepmind/mujoco/releases/tag/2.1.0), and unzip it to `~/.mujoco`. Then, you can find the folder `~/.mujoco/mujoco210`.
-
-Please move the `lib` folder in our repository to the `~/.mujoco/` folder.
-
-Then replace the `d3rlpy` folder in the your path of environment with the given `d3rlpy` folder, which can be downloaded here [D3RLPY](https://drive.google.com/drive/folders/1blEviHDCupHlHMPfDInytxwm9ZkTO8er?usp=drive_link) or extract it from the `d3rlpy.zip` file. For example, the path can be `/anaconda3/envs/<the-name-of-environment>/lib/python3.7/site-packages/`.
-
-
-### 3. Install dm-control and mjrl:
-  ```bash
-  pip install dm_control==0.0.425341097
-  git clone https://github.com/aravindr93/mjrl.git
-  cd mjrl 
-  pip install -e .
-  ```
-  
-### 4. Install d4rl:
-  ```bash
-  pip install patchelf
-  git clone https://github.com/rail-berkeley/d4rl.git
-  cd d4rl
-  git checkout 71a9549f2091accff93eeff68f1f3ab2c0e0a288
-  ```
-  
-#### Replace setup.py with:
-```
-  from distutils.core import setup
-  from platform import platform
-  from setuptools import find_packages
-
-  setup(
-     name='d4rl',
-     version='1.1',
-     install_requires=['gym',
-                       'numpy',
-                       'mujoco_py',
-                       'pybullet',
-                       'h5py',
-                       'termcolor', 
-                       'click'], 
-     packages=find_packages(),
-     package_data={'d4rl': ['locomotion/assets/*',
-                            'hand_manipulation_suite/assets/*',
-                            'hand_manipulation_suite/Adroit/*',
-                            'hand_manipulation_suite/Adroit/gallery/*',
-                            'hand_manipulation_suite/Adroit/resources/*',
-                            'hand_manipulation_suite/Adroit/resources/meshes/*',
-                            'hand_manipulation_suite/Adroit/resources/textures/*',
-                            ]},
-     include_package_data=True,
- )
-```
-
-  Then:
-
-  ```
-  pip install -e .
-  ```
-
-## Install with Docker
-
-You can also pull our image from Docker Hub:
-
-```
-docker pull liuzzyg/trajdeleter:latest
-```
-
-Then enter the image:
-
-```
-docker run --gpus all -it liuzzyg/trajdeleter:latest /bin/bash
-```
+1) Navigate to containers/image.def directory,
+2) Enter "module load apptainer",
+3) Enter "apptainer build containers/image.sif containers/image.def"
+4) Whenever need to run a script, enter "module load apptainer" to intialize the environment to ensure no error with running the scripts
 
 ## How to run
 
 ⚠️ The codes and scripts for replicating our experiments can be found in `README.md` under the `unlearning` folder. 
 
-Once 
+To submit batch jobs to HPC (for long run trainings),
+
+1) 
 
 ## Acknowledgement
 
