@@ -27,13 +27,13 @@ Unlearning
     -- CQL_performance_test_v2.py ------------------ evaluate the average cumulative rewards obtained by agents for 1% and 5% unlearning/poisoning rates (each checkpoint).
     -- IQL_performance_test.py ------------------ evaluate the average cumulative rewards obtained by agents (each checkpoints).
     -- IQL_performance_test_v2.py ------------------ evaluate the average cumulative rewards obtained by agents for 1% and 5% unlearning/poisoning rates (each checkpoint).
-    -- env_test.py ------------------ download and test the dataset
+    -- env_test.py ------------------ download and test the dataset into environment
     -- efficacy_evaluation.py ------------------ to evaluate the robustness of TrajAuditor using metrices (Precision, Recall and F1-scores).
     -- kitchen_exact_unlearning.py ------------------ unlearning with retraining the agents from scratch.
     -- kitchen_finetuning.py ------------------ unlearning with fine-tuning method.
     -- kitchen_fully_training.py ------------------ train the original agents using the whole dataset.
     -- kitchen_random_reward.py ------------------ unlearning with random_reward method.
-    -- kitchen_auditor.py ------------------ the codes of trajauditor for RQ2.
+    -- kitchen_auditor.py ------------------ code for trajauditor evaluation method
     -- kitchen_trajdeleter.py ------------------ unlearning using our proposed method.
     -- performance_test.py ------------------ evaluate the average cumulative rewards obtained by agents. (not used)
     -- poisoning_retrain.py ------------------ unlearning the poisoned trajectories using retraining method.
@@ -60,7 +60,7 @@ Unlearning
 
 Our CUDA version is -. We ran majority of the experiments on Swinburne HPC which have different GPU nodes.
 
-### Install with Apptainer
+### Install with Apptainer (ONLY FOR SWINBURNE HPC)
 
 To install the Apptainer with all the dependencies needed for the environment,
 
