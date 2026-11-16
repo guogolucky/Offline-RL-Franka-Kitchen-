@@ -1,6 +1,6 @@
 ### Franka Kitchen Tasks
 
-#### Download and test the offline dataset:
+#### Download the offline dataset:
 
 Please run:
 ```
